@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductRepositoryTest {
 
@@ -60,5 +62,33 @@ public class ProductRepositoryTest {
 
         assertArrayEquals(expected, actual);
 
+    }
+
+    @Test
+    public void removeByIdRepoException() {
+
+        repo.save(one);
+        repo.save(two);
+        repo.save(three);
+        repo.save(four);
+
+        assertThrows(NotFoundException.class, () -> {
+            repo.removeById(-4);
+        });
+    }
+
+    @Test
+    public void removeById() {
+
+        repo.save(one);
+        repo.save(two);
+        repo.save(three);
+        repo.save(four);
+
+        repo.removeById(4);
+
+        assertThrows(NotFoundException.class, () -> {
+            repo.removeById(4);
+        });
     }
 }

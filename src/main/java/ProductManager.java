@@ -28,5 +28,6 @@ public class ProductManager {
         }
         return product.getTitle().contains(search);
     }
+
 }
 

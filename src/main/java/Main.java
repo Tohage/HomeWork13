@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
         ProductManager manager = new ProductManager();
+        ProductRepository repository = new ProductRepository();
 
         Product one = new Book(1, "Snuff", "Palahniuk", 10);
         Product two = new Book(2, "Labyrinth", "MaxFry", 20);
@@ -22,5 +23,15 @@ public class Main {
 
         manager.searchBy("50");
 
+        repository.save(one);
+        repository.save(two);
+        repository.save(three);
+        repository.save(four);
+        repository.save(five);
+        repository.save(six);
+
+        repository.removeById(-7);
+
+        System.out.println("test");
     }
 }
